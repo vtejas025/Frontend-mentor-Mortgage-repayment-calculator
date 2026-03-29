@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Mortgage repayment calculator</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <div class="card">
+      <div class="inside">
+          
+        <h1>Mortgage Calculator</h1>
+
+        <form id="form" novalidate> 
+          
+          <button type="reset" tabindex="-1"><u>Clear All</u></button>
+
+          <label for="amount">Mortgage Amount</label>
+          <div class="inputs">
+            <div class="box pound">£</div>
+            <input type="text" id="amount"> 
+          </div>
+
+          <div class="group">
+            <div class="group2">
+              <label for="term">Mortgage Term</label>
+              <div class="inputs">
+                <input type="text" id="term">
+                <div class="box years">years</div>
+              </div>
+            </div>
+
+            <div class="group2">
+              <label for="rate">Interest Rate</label>
+              <div class="inputs">
+                <input type="text" id="rate">
+                <div class="box percentage">%</div>
+              </div> 
+            </div>
+          </div>
+          Mortgage Type
+          <div class="rgroup weight">
+            <input type="radio" id="repayment" name="group" required>Repayment
+          </div>
+          <div class="rgroup weight">
+            <input type="radio" id="interest" name="group">Interest Only
+          </div>
+
+          <button type="submit" class="weight">
+            <img src="assets/images/icon-calculator.svg" alt="not found">
+            Calculate Repayments
+          </button>
+
+        </form>
+      </div>
+
+      <div class="end empty">
+
+        <img src="assets/images/illustration-empty.svg" alt="not found">
+
+        <h2 class="weight">Results shown here</h2>
+
+        <p>Complete the form and click “calculate repayments” to see what 
+        your monthly repayments would be.</p>
+
+      </div>
+
+      <div class="end complete">
+
+        <h2>Your results</h2>
+
+        <p>
+          Your results are shown below based on the information you provided. 
+          To adjust the results, edit the form and click “calculate repayments” again.
+        </p>
+        
+        <div class="final">
+          Your monthly repayments
+          <hr>
+          <p>Total you'll repay over the term</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+<script src="code.js"></script>
+</body>
+</html>
