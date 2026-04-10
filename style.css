@@ -1,0 +1,350 @@
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url(assets/fonts/PlusJakartaSans-VariableFont_wght.ttf) format('truetype');
+    font-weight: 500 700;
+    font-style: normal;
+}
+:root{
+    --Lime: hsl(61, 70%, 52%);
+    --Red: hsl(4, 69%, 50%);
+    --White: hsl(0, 0%, 100%);
+    --Slate100: hsl(202, 86%, 94%);
+    --Slate300: hsl(203, 41%, 72%);
+    --Slate500: hsl(200, 26%, 54%);
+    --Slate700: hsl(200, 24%, 40%);
+    --Slate900: hsl(202, 55%, 16%);
+    --Slate900a: rgb(2, 25, 37);
+}
+body{
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    background-color: var(--Slate100);
+    font-family: 'Plus Jakarta Sans',sans-serif;
+    font-weight: 500;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main{
+    width: clamp(20rem,100vw,25rem);
+    background-color: var(--White);
+    padding-block-start: 2.5rem;
+}
+.card{
+    width: 100%;
+}
+.inputs{
+    padding-inline: 5%;
+    color: var(--Slate700);
+}
+h1{
+    font-size: 2rem;
+    display: inline-block;
+    color: var(--Slate900);
+    padding-inline: 5%;
+}
+button[type='reset']{
+    background-color: var(--White);
+    border: none;
+    display: block;
+    cursor: pointer;
+}
+button[type='reset'] u{
+    text-decoration-thickness: 0.125rem ;
+    color: var(--Slate700);
+}
+button[type='reset'] u:hover{
+    color: var(--Slate900);
+}
+button[type='reset']:focus{
+    color: var(--Slate900);
+    outline: none;
+}
+label{
+    display: inline-block;
+    margin-block: 1rem;
+    margin-block-start: 2rem;
+    cursor: pointer;
+}
+.common{
+    width: 100%;
+    height: 2.5rem;
+}
+.wrapper{
+    overflow: hidden;
+    border: 1px solid var(--Slate700);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    position: relative;
+}
+.wrapper:hover{
+    outline: 1px solid var(--Slate500);
+    border-color: var(--Slate500);
+}
+.wrapper.error{
+    border-color: var(--Red);
+}
+.wrapper:has(input[type="text"]:focus){
+    outline-color: var(--Lime);
+    border-color: var(--Lime);
+}
+.wrapper:has(input[type="text"]:focus) .symbol{
+    background-color: var(--Lime);
+}
+.wrapper:has(input[type="number"]:focus){
+    outline-color: var(--Lime);
+    border-color: var(--Lime);
+}
+.wrapper:has(input[type="number"]:focus) .symbol{
+    background-color: var(--Lime);
+}
+.symbol{
+    width: 10%;
+    height: 100%;
+    background-color: var(--Slate100);
+    color: var(--Slate700);
+    font-weight: 700;
+}
+.symbol.error{
+    color: var(--Slate100);
+    background-color: var(--Red);
+}
+.errorText{
+    color: var(--Red);
+    position: absolute;
+    margin-block: 0.25rem;
+    display: none;
+}
+.errorText.display{
+    display: block;
+}
+input[type='number'],input[type='text']{
+    font-weight: 700;
+    color: var(--Slate900);
+    height: calc(100% - 2px);
+    border: none;
+}
+input[type="number"]{
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+#amount{
+    width: 90%;
+    box-sizing: border-box;
+}
+input[type='text']:hover{
+    cursor: pointer;
+}
+input[type='text']:focus{
+    outline:none;
+}
+input[type="number"]:hover{
+    cursor: pointer;
+}
+input[type='number']:focus{
+    outline:none;
+}
+#term{
+    width: 75%;
+    box-sizing: border-box;
+}
+#years{
+    width: 25%;
+}
+#rate{
+    width: 85%;
+    box-sizing: border-box;
+}
+#percentage{
+    width: 15%;
+}
+.option{
+    border: 1px solid var(--Slate700);
+    border-radius: 0.25rem;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+#first{
+    margin-block-end: 1rem;
+}
+fieldset{
+    border: none;
+    margin: 0;
+    padding: 0;
+    margin-block: 2rem;
+}
+legend{
+    margin-block-end: 1rem;
+}
+.option:active{
+    transform: translateY(1px);
+}
+.option:hover{
+    border-color: var(--Lime);
+}
+.option:has(input:checked){
+    border-color: var(--Lime);
+    background-color: hsla(61, 70%, 52%,0.225);
+}
+input[type="radio"]{
+    margin: 1rem;
+    cursor: pointer;
+    accent-color: var(--Lime);
+}
+.radio{
+    color: var(--Slate900);
+    font-weight: 700;
+}
+.submit{
+    font-size: 1rem;
+    color: var(--Slate900);
+    background-color: var(--Lime);
+    border: none;
+    border-radius: 5rem;
+    font-weight: 700;
+    margin-block: 2.5rem;
+    cursor: pointer;
+}
+.submit:active{
+    transform: translateY(1px);
+}
+.submit:hover{
+    opacity: 0.5;
+}
+.submit span{
+    margin: 1rem;
+}
+button[type='submit']:focus{
+    outline: 2px solid var(--Lime);
+}
+.results{
+    background-color: var(--Slate900);
+    color: var(--Slate300);
+}
+.results h2{
+    color: var(--Slate100);
+}
+.empty{
+    text-align: center;
+}
+.completed{
+    display: none;
+}
+.completed h2{
+    margin: 0;
+}
+.empty,.completed{
+    width: calc(100% - 10%);
+    padding-block: 7.5%;
+    padding-inline: 5%;
+}
+.empty.showNone{
+    display: none;
+}
+.completed.showAll{
+    display: block;
+}
+hr{
+    opacity: 0.5;
+    margin-block: 1rem;
+}
+.payments{
+    background-color: var(--Slate900a);
+    border-radius: 0.5rem;
+    border-top: 0.25rem solid var(--Lime);
+    padding-inline: 5%;
+    padding-block: 5%;
+}
+.monthly{
+    color: var(--Lime);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.total{
+    color: var(--Slate100);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+@media (min-width:58.25rem) {
+    main{
+        width: 58.25rem;
+        border-radius: 1.25rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .card{
+        position: relative;
+    }
+    .inputs{
+        width: 42%;
+        padding-inline: 4%;
+    }
+    h1{
+        font-size: 1.5rem;
+        width: 46%;
+        margin-block: 0px;
+        padding-inline: 0%;
+        padding-inline-start: 4%;
+        display: inline;
+    }
+    form{
+        position: relative;
+    }
+    button[type='reset']{
+        position: absolute;
+        right: 0;
+        top: -1.375rem;
+    }
+    .group{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .group1,.group2{
+        display: flex;
+        flex-direction: column;
+        width: 45%;
+        position: relative;
+    }
+    #years{
+        width: calc(45% + 1px);
+    }
+    #percentage{
+        width: calc(25% + 1px);
+    }
+    .group1 .errorText,.group2 .errorText{
+        top: 7rem;
+    }
+    .submit{
+        width: 80%;
+    }
+    .results{
+        width: 50%;
+        height: 100%;
+        padding-block: 2.25rem;
+        border-radius: 0 1.25rem 1.25rem 5rem;
+        position: absolute;
+        right: 0rem;
+        top: -4.5rem;
+    }
+    .empty{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-block: 0%;
+    }
+    .completed{
+        height: 87.5%;
+    }
+    .completed .text{
+        margin-block: 2rem;
+    }
+}
+
+
