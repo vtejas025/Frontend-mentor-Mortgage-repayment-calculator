@@ -14,8 +14,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: https://www.frontendmentor.io/solutions/mortgage-repayment-calculator-fk6wLyICJH
-- Live Site URL: https://vtejas025.github.io/Frontend-mentor-Mortgage-repayment-calculator/
+- Solution URL: 
+- Live Site URL: 
 
 ## Author
 
