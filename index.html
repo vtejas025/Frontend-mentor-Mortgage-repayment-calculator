@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Mortgage repayment calculator</title>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex">
+
+  <main>
+
+    <h1>Mortgage Calculator</h1>
+
+    <div class="card">
+
+      <section class="inputs">
+
+        <form novalidate>
+          
+          <button type="reset" class="reset">Clear All</button>
+
+          <label for="amount" class="label">Mortgage Amount</label>
+
+          <div class="wrapper common flex">
+
+            <span class="symbol flex">
+              £
+            </span>
+
+            <div class="preview">
+
+              <input type="number" id="amount" name="amount" step="0.01" min="0" class="numberInput amount" required>
+
+              <span class="formatted flex">hello</span>
+              
+            </div>
+
+          </div>
+
+          <span class="errorText">This field is required</span>
+
+          <div class="group">
+
+            <div class="group1">
+
+              <label for="term" class="label">Mortgage Term</label>
+
+              <div class="wrapper common flex">
+
+                <input type="number" id="term" name="term" step="0.01" min="0" required class=" numberInput term">
+
+                <span class="symbol flex years">
+                  years
+                </span>
+
+              </div>
+
+              <span class="errorText">This field is required</span>
+
+            </div>
+
+            <div class="group2">
+
+              <label for="rate" class="label">Interest Rate</label>
+
+              <div class="wrapper common flex">
+
+                <input type="number" id="rate" name="rate" step="0.01" min="0" required class="numberInput rate">
+
+                <span class="symbol flex percentage">
+                  %
+                </span>
+
+              </div>
+
+              <span class="errorText">This field is required</span>
+              
+            </div>
+
+          </div>
+
+          <fieldset>
+
+            <legend>
+              Mortgage Type
+            </legend>
+      
+            <label class="option common flex" id="first" for="repayment">
+              <input type="radio" name="radio" required id="repayment" value="repayment">
+
+              Repayment
+            </label>
+
+            <label class="option common flex" for="interest">
+              <input type="radio" name="radio" id="interest" value="interest">
+
+              Interest Only
+            </label>          
+
+            <span class="errorText" id="sole">This field is required</span>
+
+          </fieldset>
+
+          <button type="submit" class="submit flex common">
+
+            <img src="assets/images/icon-calculator.svg" alt="">
+
+            <span>Calculate Repayments</span>
+          </button>
+        </form>
+      
+      </section>
+
+      <section class="results">
+
+        <div class="empty">
+
+          <img src="assets/images/illustration-empty.svg" alt="empty">
+
+          <h2>Results shown here</h2>
+
+          <p>
+            Complete the form and click “calculate repayments” to see what 
+            your monthly repayments would be.
+          </p>
+
+        </div>
+
+        <div class="completed">
+
+          <h2>Your results</h2>
+
+          <p class="text">
+            Your results are shown below based on the information you provided. 
+            To adjust the results, edit the form and click “calculate repayments” again.
+          </p>
+
+          <div class="payments">
+            <p>Your monthly repayments</p>
+
+            <span class="monthly"></span>
+
+            <hr>
+
+            <p>Total you'll repay over the term</p>
+
+            <span class="total"></span>
+          </div>
+
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+<script src="code.js"></script>
+</body>
+</html>
