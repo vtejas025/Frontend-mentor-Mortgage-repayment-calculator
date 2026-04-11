@@ -12,6 +12,7 @@
 }
 :root{
     --Lime: hsl(61, 70%, 52%);
+    --LimeDark : hsla(61, 70%, 52%, 0.225);
     --Red: hsl(4, 69%, 50%);
     --White: hsl(0, 0%, 100%);
     --Slate100: hsl(202, 86%, 94%);
@@ -129,7 +130,7 @@ h1{
     opacity: 1;
 }
 .wrapper:focus-within{
-    outline-color: var(--Lime);
+    outline: 1px solid var(--Lime);
     border-color: var(--Lime);
 }
 .wrapper:focus-within .symbol{
@@ -145,7 +146,7 @@ h1{
     display: block;
 }
 .numberInput{
-    font-family: 'Plus Jakarta Sans';
+    font-family: 'Plus Jakarta Sans',sans-serif;
     font-weight: 700;
     color: var(--Slate900);
     height: 100%;
@@ -162,9 +163,6 @@ h1{
 }
 .amount.show{
     opacity: 0;
-}
-input:hover{
-    cursor: pointer;
 }
 .numberInput:focus{
     outline: 1px solid var(--Lime);
@@ -200,7 +198,7 @@ legend{
     color: var(--Slate900);
     font-weight: 700;
 }
-#first{
+.first{
     margin-block-end: 1rem;
 }
 .option:active{
@@ -211,7 +209,7 @@ legend{
 }
 .option:has(input:checked){
     border-color: var(--Lime);
-    background-color: hsla(61, 70%, 52%,0.225);
+    background-color: var(--LimeDark);
 }
 input[type="radio"]{
     margin: 1rem;
@@ -278,6 +276,9 @@ hr{
     padding-inline: 5%;
     padding-block: 5%;
 }
+.payments label{
+    display: block;
+}
 .monthly{
     color: var(--Lime);
     font-size: 2.5rem;
@@ -315,7 +316,7 @@ hr{
     }
     .reset{
         position: absolute;
-        right: 0;
+        right: 54%;
         top: -1.375rem;
     }
     .group{
@@ -346,11 +347,11 @@ hr{
     .results{
         width: 50%;
         height: 100%;
-        padding-block: 2.25rem;
+        padding-block: 3.5rem;
         border-radius: 0 1.25rem 1.25rem 5rem;
         position: absolute;
         right: 0rem;
-        top: -4.5rem;
+        top: -4.4rem;
     }
     .empty{
         height: 100%;
@@ -362,6 +363,7 @@ hr{
     }
     .completed{
         height: 87.5%;
+        padding-block: 0%;
     }
     .completed .text{
         margin-block: 2rem;

@@ -18,9 +18,9 @@
 
     <div class="card">
 
-      <section class="inputs">
+      <form novalidate>
 
-        <form novalidate>
+        <section class="inputs">
           
           <button type="reset" class="reset">Clear All</button>
 
@@ -37,7 +37,7 @@
               <input type="number" id="amount" name="amount" step="any" min="0" class="numberInput amount" required>
 
               <span class="formatted flex">hello</span>
-              
+
             </div>
 
           </div>
@@ -90,14 +90,14 @@
               Mortgage Type
             </legend>
       
-            <label class="option common flex" id="first" for="repayment">
-              <input type="radio" name="radio" required id="repayment" value="repayment">
+            <label class="option common flex first">
+              <input type="radio" name="calculationType" required id="repayment" value="repayment">
 
               Repayment
             </label>
 
-            <label class="option common flex" for="interest">
-              <input type="radio" name="radio" id="interest" value="interest">
+            <label class="option common flex">
+              <input type="radio" name="calculationType" id="interest" value="interest">
 
               Interest Only
             </label>          
@@ -112,49 +112,52 @@
 
             <span>Calculate Repayments</span>
           </button>
-        </form>
-      
-      </section>
+    
+        </section>
 
-      <section class="results">
+        <section class="results">
 
-        <div class="empty">
+          <div class="empty">
 
-          <img src="assets/images/illustration-empty.svg" alt="empty">
+            <img src="assets/images/illustration-empty.svg" alt="empty">
 
-          <h2>Results shown here</h2>
+            <h2>Results shown here</h2>
 
-          <p>
-            Complete the form and click “calculate repayments” to see what 
-            your monthly repayments would be.
-          </p>
+            <p>
+              Complete the form and click “calculate repayments” to see what 
+              your monthly repayments would be.
+            </p>
 
-        </div>
-
-        <div class="completed">
-
-          <h2>Your results</h2>
-
-          <p class="text">
-            Your results are shown below based on the information you provided. 
-            To adjust the results, edit the form and click “calculate repayments” again.
-          </p>
-
-          <div class="payments">
-            <p>Your monthly repayments</p>
-
-            <span class="monthly"></span>
-
-            <hr>
-
-            <p>Total you'll repay over the term</p>
-
-            <span class="total"></span>
           </div>
 
-        </div>
+          <div class="completed">
 
-      </section>
+            <h2>Your results</h2>
+
+            <p class="text">
+              Your results are shown below based on the information you provided. 
+              To adjust the results, edit the form and click “calculate repayments” again.
+            </p>
+
+            <div class="payments">
+
+              <label for="monthly">Your monthly repayments</label>
+
+              <output id="monthly" class="monthly" name="monthly" for="amount term rate"></output>
+      
+              <hr>
+
+              <label for="total">Total you'll repay over the term</label>
+
+              <output id="total" class="total" name="total" for="amount term rate"></output>
+            
+            </div>
+
+          </div>
+
+        </section>
+
+      </form>
     </div>
   </main>
 

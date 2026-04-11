@@ -12,16 +12,18 @@ const final=document.querySelector(".total");
 const clear=document.querySelector(".reset");
 clear.click();
 function formatInputAmount(){
-    if(inputAmount.value.trim()!==""){
-        formatted.classList.toggle("show",true);
-        inputAmount.classList.toggle("show",true);
+    if(formatted && inputAmount){
+        if(inputAmount.value.trim()!==""){
+                formatted.classList.toggle("show",true);
+                inputAmount.classList.toggle("show",true);
 
-        const num=inputAmount.value;
-        formatted.textContent=new Intl.NumberFormat('en-US').format(num);
-    }
-    else{
-        formatted.classList.toggle("show",false);
-        inputAmount.classList.toggle("show",false);
+                const num=Number(inputAmount.value);
+                formatted.textContent=new Intl.NumberFormat('en-US').format(num);
+        }
+        else{
+            formatted.classList.toggle("show",false);
+            inputAmount.classList.toggle("show",false);
+        }
     }
 }
 function removeError(ele){
@@ -112,6 +114,12 @@ function calculate(){
 
     rate=rate/(12*100);
     term=term*12;
+
+    if(amount <= 0 || rate <= 0 || term <= 0){
+        monthly.textContent="£0.00";
+        final.textContent="£0.00";
+        return
+    }
     let emi=null;
     let total=null;
 
@@ -150,63 +158,75 @@ function show(value){
     completed.classList.toggle("showAll",value);
 
 }
-firstSection.addEventListener("change",(e)=>{
-    if(e.target.matches("input[type='radio']")){
-        radioChoosen=e.target;
-    }
-});
-firstSection.addEventListener("click",(e)=>{
-
-    if(e.target.matches("input[type='radio']")){
-        changeRadio(e.target);
-    }
-    if(e.target.closest(".symbol")){
-        const ele=e.target.closest(".symbol");
-        changeColor(ele);
-    }
-    if(e.target.closest(".reset")){
-        show(false);
-    }
-
-});
-firstSection.addEventListener("focusin",(e)=>{
-
-    if(e.target.matches(".numberInput")){
-        let ele=null;
-
-        if(e.target.id === "amount"){
-            formatted.classList.toggle("show",false);
-            inputAmount.classList.toggle("show",false);
-            ele=e.target.parentElement;
-            removeError(ele);
-        }
-        else{
-            removeError(e.target);
-        }
-    }
-    if(e.target.matches("input[type='radio']")){
-        removeErrorRadio(e.target);
-    }
-
-});
-inputAmount.addEventListener("focusout",formatInputAmount);
-form.addEventListener("submit",(e)=>{
-    e.preventDefault();
-
-    inputNumbers.forEach(ele=>{
-        if(!ele.checkValidity()){
-            showError(ele);
+if(firstSection){
+    firstSection.addEventListener("change",(e)=>{
+        if(e.target.matches("input[type='radio']")){
+            radioChoosen=e.target;
         }
     });
+    firstSection.addEventListener("click",(e)=>{
 
-    const radioGroup = form.elements['radio'];
-    const radioGroupValue=radioGroup.value;
+        if(e.target.matches("input[type='radio']")){
+            changeRadio(e.target);
+        }
+        if(e.target.closest(".symbol")){
+            const ele=e.target.closest(".symbol");
+            changeColor(ele);
+        }
+        if(e.target.closest(".reset")){
+            show(false);
+        }
 
-    if(!radioGroupValue){
-        showError(sole);
-    }
-    if(form.checkValidity() && radioGroupValue){
-        calculate();
-        show(true);
-    }
-});
+    });
+    firstSection.addEventListener("focusin",(e)=>{
+
+        if(e.target.matches(".numberInput")){
+            let ele=null;
+
+            if(e.target.id === "amount"){
+                if(formatted && inputAmount){
+                    formatted.classList.toggle("show",false);
+                    inputAmount.classList.toggle("show",false);
+                }
+                ele=e.target.parentElement;
+                removeError(ele);
+            }
+            else{
+                removeError(e.target);
+            }
+        }
+        if(e.target.matches("input[type='radio']")){
+            removeErrorRadio(e.target);
+        }
+
+    });
+}
+else{
+    console.warn("element not found — handlers not attached");
+}
+inputAmount.addEventListener("focusout",formatInputAmount);
+if(form){
+    form.addEventListener("submit",(e)=>{
+        e.preventDefault();
+
+        inputNumbers.forEach(ele=>{
+            if(!ele.checkValidity()){
+                showError(ele);
+            }
+        });
+
+        const radioGroup = form.elements['calculationType'];
+        const radioGroupValue=radioGroup.value;
+
+        if(!radioGroupValue){
+            showError(sole);
+        }
+        if(form.checkValidity() && radioGroupValue){
+            calculate();
+            show(true);
+        }
+    });
+}
+else{
+    console.warn("element not found — handlers not attached");
+}
