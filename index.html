@@ -20,7 +20,9 @@
 
       <form novalidate>
 
-        <section class="inputs">
+        <h2 id="loan-heading" class="visually-hidden">Loan details</h2>
+
+        <section class="inputs" aria-labelledby="loan-heading">
           
           <button type="reset" class="reset">Clear All</button>
 
@@ -44,7 +46,9 @@
 
           <span class="errorText">This field is required</span>
 
-          <div class="group">
+          <fieldset class="group" aria-labelledby="mortgage-group-legend">
+
+            <legend id="mortgage-group-legend" class="visually-hidden">Mortgage details</legend>
 
             <div class="group1">
 
@@ -82,9 +86,9 @@
               
             </div>
 
-          </div>
+          </fieldset>
 
-          <fieldset>
+          <fieldset class="radios">
 
             <legend>
               Mortgage Type

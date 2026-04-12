@@ -10,7 +10,9 @@ const completed=document.querySelector(".completed");
 const monthly=document.querySelector(".monthly");
 const final=document.querySelector(".total");
 const clear=document.querySelector(".reset");
-clear.click();
+if(clear){
+    clear.click();
+}
 function formatInputAmount(){
     if(formatted && inputAmount){
         if(inputAmount.value.trim()!==""){
@@ -56,6 +58,7 @@ function changeRadio(ele){
     if(radioChoosen === ele){
         radioChoosen.checked=false;
         radioChoosen=null;
+        ele.parentElement.classList.toggle("colorChange",false);
     }
 
     removeErrorRadio();
@@ -161,7 +164,11 @@ function show(value){
 if(firstSection){
     firstSection.addEventListener("change",(e)=>{
         if(e.target.matches("input[type='radio']")){
+            if(radioChoosen){
+                radioChoosen.parentElement.classList.toggle("colorChange",false);
+            }
             radioChoosen=e.target;
+            e.target.parentElement.classList.toggle("colorChange",true);
         }
     });
     firstSection.addEventListener("click",(e)=>{
@@ -204,7 +211,9 @@ if(firstSection){
 else{
     console.warn("element not found — handlers not attached");
 }
-inputAmount.addEventListener("focusout",formatInputAmount);
+if(inputAmount){
+    inputAmount.addEventListener("focusout",formatInputAmount);
+}
 if(form){
     form.addEventListener("submit",(e)=>{
         e.preventDefault();
@@ -215,8 +224,8 @@ if(form){
             }
         });
 
-        const radioGroup = form.elements['calculationType'];
-        const radioGroupValue=radioGroup.value;
+        const checked = form.querySelector('input[name="calculationType"]:checked');
+        const radioGroupValue = checked ? checked.value : null;
 
         if(!radioGroupValue){
             showError(sole);

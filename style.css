@@ -3,12 +3,14 @@
     src: url(assets/fonts/static/PlusJakartaSans-Medium.ttf) format('truetype');
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
 }
 @font-face {
     font-family: 'Plus Jakarta Sans';
     src: url(assets/fonts/static/PlusJakartaSans-Bold.ttf) format('truetype');
     font-weight: 700;
     font-style: normal;
+    font-display: swap;
 }
 :root{
     --Lime: hsl(61, 70%, 52%);
@@ -43,6 +45,10 @@ main{
 }
 .card{
     width: 100%;
+}
+.visually-hidden{
+    position: absolute;
+    opacity: 0;
 }
 .inputs{
     padding-inline: 5%;
@@ -185,6 +191,8 @@ fieldset{
     border: none;
     margin: 0;
     padding: 0;
+}
+.radios{
     margin-block: 2rem;
 }
 legend{
@@ -207,7 +215,7 @@ legend{
 .option:hover{
     border-color: var(--Lime);
 }
-.option:has(input:checked){
+.option.colorChange{
     border-color: var(--Lime);
     background-color: var(--LimeDark);
 }
