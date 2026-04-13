@@ -315,6 +315,7 @@ hr{
         width: 58.25rem;
         border-radius: 1.25rem;
         padding-block-start: 0;
+        position: relative;
     }
     .card{
         position: relative;
