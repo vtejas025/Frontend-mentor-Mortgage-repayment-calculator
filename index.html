@@ -26,7 +26,7 @@
           
           <button type="reset" class="reset">Clear All</button>
 
-          <label for="amount" class="label">Mortgage Amount</label>
+          <label for="amount" class="label firstLabel">Mortgage Amount</label>
 
           <div class="form-field dimensions flex">
 
@@ -38,7 +38,7 @@
 
               <input type="number" id="amount" name="amount" step="any" min="0" class="form-field__input amount" required>
 
-              <span class="form-field__formatted flex">hello</span>
+              <span class="form-field__formatted flex"></span>
 
             </div>
 
@@ -106,7 +106,7 @@
               Interest Only
             </label>          
 
-            <span class="errorText" id="sole">This field is required</span>
+            <span class="errorText lastErrorText">This field is required</span>
 
           </fieldset>
 
@@ -121,7 +121,7 @@
 
         <section class="results">
 
-          <div class="empty flex">
+          <section class="empty flex" aria-labelledby="results-empty" aria-live="polite">
 
             <img src="assets/images/illustration-empty.svg" alt="empty">
 
@@ -132,9 +132,9 @@
               your monthly repayments would be.
             </p>
 
-          </div>
+          </section>
 
-          <div class="completed">
+          <section class="completed" aria-labelledby="results-completed" aria-live="polite">
 
             <h2>Your results</h2>
 
@@ -157,7 +157,7 @@
             
             </div>
 
-          </div>
+          </section>
 
         </section>
 

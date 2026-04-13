@@ -3,7 +3,7 @@ const firstSection=document.querySelector(".inputs");
 const inputNumbers=document.querySelectorAll(".form-field__input");
 const inputAmount=document.querySelector(".amount");
 const formatted=document.querySelector(".form-field__formatted");
-const sole=document.querySelector("#sole");
+const lastError=document.querySelector(".lastErrorText");
 const form=document.querySelector("form");
 const empty=document.querySelector(".empty");
 const completed=document.querySelector(".completed");
@@ -47,6 +47,7 @@ function removeError(ele){
 
     if(parent && parent.classList.contains("error")){
         parent.classList.remove("error");
+        parent.classList.remove("noMargin");
     }
     if(symbol && symbol.classList.contains("error")){
         symbol.classList.remove("error");
@@ -58,12 +59,15 @@ function removeError(ele){
 
 function removeErrorRadio(){
 
-    if(sole.classList.contains("display")){
-        sole.classList.remove("display");
+    if(lastError && lastError.classList.contains("display")){
+        lastError.classList.remove("display");
+        lastError.classList.remove("addMargin");
+        if(lastError.parentElement){
+            lastError.parentElement.classList.remove("noMargin");
+        }
     }
 
 }
-
 function changeRadio(ele){
 
     if(radioChoosen === ele){
@@ -93,28 +97,31 @@ function changeColor(ele){
 
 function showError(ele){
 
+    let parent=null;
+
     if(ele.getAttribute("type")==="number"){
 
-        let parent=null;
         if(ele.id === "amount"){
-            parent=ele.parentElement.parentElement;
+            parent=ele?.parentElement?.parentElement;
         }
         else{
-            parent=ele.parentElement;
+            parent=ele?.parentElement;
         }
 
         const symbol=parent.querySelector(".symbol");
         const sibling=parent.nextElementSibling;
 
-        parent.classList.add("error");
-        symbol.classList.add("error");
-
-        if(sibling){
-            sibling.classList.add("display");
-        }
+        parent?.classList.add("error");
+        parent?.classList.add("noMargin");
+        symbol?.classList.add("error");
+        sibling?.classList.add("display");
     }
     else{
-        ele.classList.add("display");
+
+        parent=ele?.parentElement;
+        parent?.classList.add("noMargin");
+        ele?.classList.add("display");
+        ele?.classList.add("addMargin");
     }
 }
 
@@ -237,7 +244,9 @@ if(form){
         const radioGroupValue = checked ? checked.value : null;
 
         if(!radioGroupValue){
-            showError(sole);
+            if(lastError){
+                showError(lastError);
+            }
         }
         if(form.checkValidity() && radioGroupValue){
             calculate();

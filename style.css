@@ -92,9 +92,14 @@ form{
 }
 .label{
     display: inline-block;
-    margin-block: 1rem;
-    margin-block-start: 2rem;
+    margin-block-end: 1rem;
     cursor: pointer;
+}
+.label.newMargin{
+    margin-block-start: 0.5rem;
+}
+.firstLabel{
+    margin-block-start: 2rem;
 }
 .dimensions{
     width: 100%;
@@ -106,6 +111,10 @@ form{
     border-radius: 0.25rem;
     cursor: pointer;
     position: relative;
+    margin-block-end: 2rem;
+}
+.form-field.noMargin{
+    margin-block-end: 0rem;
 }
 .form-field:hover{
     outline: 1px solid var(--Slate500);
@@ -137,13 +146,16 @@ form{
     height: 100%;
     font-size: 0.8rem;
     justify-content: flex-start;
-    transform: translateY(-100%);
     position: relative;
-    opacity: 0;
     font-weight: 700;
     color: var(--Slate900);
     padding-inline-start: 2px;
     box-sizing: border-box;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 500ms ease, opacity 500ms ease;
+    will-change: transform, opacity;
+
 }
 .form-field__formatted.show{
     opacity: 1;
@@ -157,12 +169,16 @@ form{
 }
 .errorText{
     color: var(--Red);
-    position: absolute;
+    font-size: 0.775rem;
     margin-block: 0.25rem;
+    margin-block-end: 0.75rem;
     display: none;
 }
 .errorText.display{
     display: block;
+}
+.errorText.addMargin{
+    margin-block-end: 1.25rem;
 }
 .form-field__input{
     font-family: 'Plus Jakarta Sans',sans-serif;
@@ -205,7 +221,10 @@ fieldset{
     padding: 0;
 }
 .radios{
-    margin-block: 2rem;
+    margin-block-end: 2.5rem;
+}
+.radios.noMargin{
+    margin-block-end: 0rem;
 }
 legend{
     margin-block-end: 1rem;
@@ -243,7 +262,7 @@ input[type="radio"]{
     border: none;
     border-radius: 5rem;
     font-weight: 700;
-    margin-block: 2.5rem;
+    margin-block-end: 2.5rem;
     cursor: pointer;
 }
 .submit:active{
@@ -315,6 +334,7 @@ hr{
         width: 58.25rem;
         border-radius: 1.25rem;
         padding-block-start: 0;
+        position: relative;
     }
     .card{
         position: relative;
@@ -357,9 +377,6 @@ hr{
     .percentage{
         width: 25%;
         box-sizing: border-box;
-    }
-    .group1 .errorText,.group2 .errorText{
-        top: 7rem;
     }
     .submit{
         width: 80%;
