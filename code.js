@@ -1,8 +1,8 @@
 let radioChoosen=null;
 const firstSection=document.querySelector(".inputs");
-const inputNumbers=document.querySelectorAll(".numberInput");
+const inputNumbers=document.querySelectorAll(".form-field__input");
 const inputAmount=document.querySelector(".amount");
-const formatted=document.querySelector(".formatted");
+const formatted=document.querySelector(".form-field__formatted");
 const sole=document.querySelector("#sole");
 const form=document.querySelector("form");
 const empty=document.querySelector(".empty");
@@ -11,21 +11,32 @@ const monthly=document.querySelector(".monthly");
 const final=document.querySelector(".total");
 const clear=document.querySelector(".reset");
 if(clear){
-    clear.click();
+    window.addEventListener("load", () => {
+        clear.click();
+    });
 }
 function formatInputAmount(){
     if(formatted && inputAmount){
-        if(inputAmount.value.trim()!==""){
-                formatted.classList.toggle("show",true);
-                inputAmount.classList.toggle("show",true);
 
-                const num=Number(inputAmount.value);
-                formatted.textContent=new Intl.NumberFormat('en-US').format(num);
+        if(inputAmount.validity.badInput){
+            formatted.classList.toggle("show",true);
+            inputAmount.classList.toggle("show",true);
+
+            formatted.textContent="Enter a valid amount";
         }
-        else{
+        else if(inputAmount.validity.valueMissing){
             formatted.classList.toggle("show",false);
             inputAmount.classList.toggle("show",false);
         }
+        else if(inputAmount.validity.valid){
+            const parsed=Number(inputAmount.value.trim());
+
+            formatted.classList.toggle("show",true);
+            inputAmount.classList.toggle("show",true);
+
+            formatted.textContent=new Intl.NumberFormat('en-US').format(parsed);
+        }
+           
     }
 }
 function removeError(ele){
@@ -59,6 +70,13 @@ function changeRadio(ele){
         radioChoosen.checked=false;
         radioChoosen=null;
         ele.parentElement.classList.toggle("colorChange",false);
+    }
+    else{
+        if(radioChoosen){
+            radioChoosen.parentElement.classList.toggle("colorChange",false);
+        }
+        radioChoosen=ele;
+        ele.parentElement.classList.toggle("colorChange",true);
     }
 
     removeErrorRadio();
@@ -162,15 +180,6 @@ function show(value){
 
 }
 if(firstSection){
-    firstSection.addEventListener("change",(e)=>{
-        if(e.target.matches("input[type='radio']")){
-            if(radioChoosen){
-                radioChoosen.parentElement.classList.toggle("colorChange",false);
-            }
-            radioChoosen=e.target;
-            e.target.parentElement.classList.toggle("colorChange",true);
-        }
-    });
     firstSection.addEventListener("click",(e)=>{
 
         if(e.target.matches("input[type='radio']")){
@@ -187,7 +196,7 @@ if(firstSection){
     });
     firstSection.addEventListener("focusin",(e)=>{
 
-        if(e.target.matches(".numberInput")){
+        if(e.target.matches(".form-field__input")){
             let ele=null;
 
             if(e.target.id === "amount"){
@@ -233,6 +242,15 @@ if(form){
         if(form.checkValidity() && radioGroupValue){
             calculate();
             show(true);
+        }
+    });
+    form.addEventListener("reset",()=>{
+        if(formatted){
+            formatted.textContent="";
+        }
+        if(radioChoosen){
+            radioChoosen.parentElement.classList.remove("colorChange");
+            radioChoosen=null;
         }
     });
 }

@@ -28,17 +28,17 @@
 
           <label for="amount" class="label">Mortgage Amount</label>
 
-          <div class="wrapper common flex">
+          <div class="form-field dimensions flex">
 
             <span class="symbol flex">
               £
             </span>
 
-            <div class="preview">
+            <div class="form-field__preview">
 
-              <input type="number" id="amount" name="amount" step="any" min="0" class="numberInput amount" required>
+              <input type="number" id="amount" name="amount" step="any" min="0" class="form-field__input amount" required>
 
-              <span class="formatted flex">hello</span>
+              <span class="form-field__formatted flex">hello</span>
 
             </div>
 
@@ -54,9 +54,9 @@
 
               <label for="term" class="label">Mortgage Term</label>
 
-              <div class="wrapper common flex">
+              <div class="form-field dimensions flex">
 
-                <input type="number" id="term" name="term" step="any" min="0" required class=" numberInput term">
+                <input type="number" id="term" name="term" step="any" min="0" required class="form-field__input term">
 
                 <span class="symbol flex years">
                   years
@@ -72,9 +72,9 @@
 
               <label for="rate" class="label">Interest Rate</label>
 
-              <div class="wrapper common flex">
+              <div class="form-field dimensions flex">
 
-                <input type="number" id="rate" name="rate" step="any" min="0" required class="numberInput rate">
+                <input type="number" id="rate" name="rate" step="any" min="0" required class="form-field__input rate">
 
                 <span class="symbol flex percentage">
                   %
@@ -94,13 +94,13 @@
               Mortgage Type
             </legend>
       
-            <label class="option common flex first">
+            <label class="option dimensions flex first">
               <input type="radio" name="calculationType" required id="repayment" value="repayment">
 
               Repayment
             </label>
 
-            <label class="option common flex">
+            <label class="option dimensions flex">
               <input type="radio" name="calculationType" id="interest" value="interest">
 
               Interest Only
@@ -110,7 +110,7 @@
 
           </fieldset>
 
-          <button type="submit" class="submit flex common">
+          <button type="submit" class="submit flex dimensions">
 
             <img src="assets/images/icon-calculator.svg" alt="">
 
@@ -121,7 +121,7 @@
 
         <section class="results">
 
-          <div class="empty">
+          <div class="empty flex">
 
             <img src="assets/images/illustration-empty.svg" alt="empty">
 
