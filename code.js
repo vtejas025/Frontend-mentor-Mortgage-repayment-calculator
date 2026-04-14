@@ -19,20 +19,20 @@ function formatInputAmount(){
     if(formatted && inputAmount){
 
         if(inputAmount.validity.badInput){
-            formatted.classList.toggle("show",true);
-            inputAmount.classList.toggle("show",true);
+            formatted.classList.toggle("visible",true);
+            inputAmount.classList.toggle("notVisible",true);
 
             formatted.textContent="Enter a valid amount";
         }
         else if(inputAmount.validity.valueMissing){
-            formatted.classList.toggle("show",false);
-            inputAmount.classList.toggle("show",false);
+            formatted.classList.toggle("visible",false);
+            inputAmount.classList.toggle("notVisible",false);
         }
         else if(inputAmount.validity.valid){
             const parsed=Number(inputAmount.value.trim());
 
-            formatted.classList.toggle("show",true);
-            inputAmount.classList.toggle("show",true);
+            formatted.classList.toggle("visible",true);
+            inputAmount.classList.toggle("notVisible",true);
 
             formatted.textContent=new Intl.NumberFormat('en-US').format(parsed);
         }
@@ -70,17 +70,22 @@ function removeErrorRadio(){
 }
 function changeRadio(ele){
 
+    const parent=ele.parentElement;
     if(radioChoosen === ele){
         radioChoosen.checked=false;
         radioChoosen=null;
-        ele.parentElement.classList.toggle("colorChange",false);
+        if(parent){
+            parent.classList.toggle("colorChange",false);
+        }    
     }
     else{
         if(radioChoosen){
             radioChoosen.parentElement.classList.toggle("colorChange",false);
         }
         radioChoosen=ele;
-        ele.parentElement.classList.toggle("colorChange",true);
+        if(parent){
+            parent.classList.toggle("colorChange",true);
+        }
     }
 
     removeErrorRadio();
@@ -90,7 +95,7 @@ function changeRadio(ele){
 function changeColor(ele){
 
     const input=ele.parentElement.querySelector("input");
-    input.focus();
+    if(input) input.focus();
 
     removeError(ele);
 }
@@ -144,8 +149,8 @@ function calculate(){
     term=term*12;
 
     if(amount <= 0 || rate <= 0 || term <= 0){
-        monthly.textContent="£0.00";
-        final.textContent="£0.00";
+        if(monthly) monthly.textContent="£0.00";
+        if(final) final.textContent="£0.00";
         return
     }
     let emi=null;
@@ -176,14 +181,18 @@ function calculate(){
         maximumFractionDigits: 2
     }).format(total);
 
-    monthly.textContent=emi;
-    final.textContent=total;
+    if(monthly) monthly.textContent=emi;
+    if(final) final.textContent=total;
 }
 
 function show(value){
 
-    empty.classList.toggle("showNone",value);
-    completed.classList.toggle("showAll",value);
+    if(empty){
+        empty.classList.toggle("showNone",value);
+    }
+    if(completed){
+        completed.classList.toggle("showAll",value);
+    }
 
 }
 if(firstSection){
@@ -208,8 +217,8 @@ if(firstSection){
 
             if(e.target.id === "amount"){
                 if(formatted && inputAmount){
-                    formatted.classList.toggle("show",false);
-                    inputAmount.classList.toggle("show",false);
+                    formatted.classList.toggle("visible",false);
+                    inputAmount.classList.toggle("notVisible",false);
                 }
                 ele=e.target.parentElement;
                 removeError(ele);

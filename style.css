@@ -157,7 +157,7 @@ form{
     will-change: transform, opacity;
 
 }
-.form-field__formatted.show{
+.form-field__formatted.visible{
     opacity: 1;
 }
 .form-field:focus-within{
@@ -195,11 +195,11 @@ form{
     position: relative;
     z-index: 1;
 }
-.amount.show{
+.amount.notVisible{
     opacity: 0;
 }
 .form-field__input:focus{
-    outline: 1px solid var(--Lime);
+    outline: none;
 }
 .term{
     width: 75%;
